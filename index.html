@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nike. Just Do It. 나이키 코리아</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <script>
+    $(function () {
+      setupSwiper();
+
+      $(".root-menu-item").hover(function () {
+        if ($(this).children(".root-sub-menu-container").length == 0) {
+          // 서브메뉴가 없으면 블러처리 안함
+          return;
+        }
+        $(".main-container, .footer-container").addClass("blurred");
+      }, function () {
+        $(".main-container, .footer-container").removeClass("blurred");
+      })
+    });
+
+    function setupSwiper() {
+      const featuredShoeSlidesSwiper = new Swiper('.featured-shoe-slides', {
+        direction: 'horizontal',
+        spaceBetween: 16,
+        centeredSlides: true,
+        slidesPerView: 3,
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          draggable: true,
+        },
+      });
+      $(".featured-shoe-slide-control-button-prev").addClass("disabled");
+      $(".featured-shoe-slide-control-button-prev").click(function () {
+        featuredShoeSlidesSwiper.slidePrev();
+        $(".featured-shoe-slide-control-button").removeClass("disabled");
+        if (featuredShoeSlidesSwiper.isBeginning) {
+          $(this).addClass("disabled");
+        }
+      });
+      $(".featured-shoe-slide-control-button-next").click(function () {
+        featuredShoeSlidesSwiper.slideNext();
+        $(".featured-shoe-slide-control-button").removeClass("disabled");
+        if (featuredShoeSlidesSwiper.isEnd) {
+          $(this).addClass("disabled");
+        }
+      });
+
+      const productSlidesSwiper = new Swiper('.product-slides', {
+        direction: 'horizontal',
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        centeredSlides: true,
+        spaceBetween: 16,
+        slidesPerView: 3,
+      });
+      $(".product-slides").each(function (n, swiperElem) {
+        const slideCount = $(swiperElem).find(".swiper-slide").length;
+        const firstItemIndex = 3;
+
+        $(swiperElem).find(".swiper-slide").each(function (m, sipwerSlideElem) {
+          let itemIndex;
+          if (m < firstItemIndex) {
+            itemIndex = slideCount - (firstItemIndex - m) + 1;
+          } else {
+            itemIndex = m - firstItemIndex + 1;
+          }
+          $(this).find(".slide-page-indicator").text(`${itemIndex}/${slideCount}`);
+        });
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <div id="wrap">
+
+    <nav class="page-top-menu-container">
+      <div class="page-top-menu-content">
+        <ul class="page-top-menu page-top-menu-no-border">
+          <li class="page-top-menu-item"><a href="#"><img src="img/jordan.png" alt="Jordan"></a></li>
+          <li class="page-top-menu-item"><a href="#"><img src="img/converse.png" alt="Converse"></a></li>
+        </ul>
+        <ul class="page-top-menu">
+          <li class="page-top-menu-item"><a href="#">매장 찾기</a></li>
+          <li class="page-top-menu-item">
+            <a href="#">고객센터</a>
+            <ul class="customer-support-menu">
+              <li class="customer-support-menu-title"><a href="#">고객센터</a></li>
+              <li class="customer-support-menu-item"><a href="#">주문</a></li>
+              <li class="customer-support-menu-item"><a href="#">로그인 안내</a></li>
+              <li class="customer-support-menu-item"><a href="#">결제 방법</a></li>
+              <li class="customer-support-menu-item"><a href="#">배송</a></li>
+              <li class="customer-support-menu-item"><a href="#">반품</a></li>
+              <li class="customer-support-menu-item"><a href="#">사이즈 가이드</a></li>
+              <li class="customer-support-menu-item"><a href="#">문의하기</a></li>
+              <li class="customer-support-menu-item"><a href="#">개인정보처리방침</a></li>
+              <li class="customer-support-menu-item"><a href="#">이용약관</a></li>
+              <li class="customer-support-menu-item"><a href="#">이벤트</a></li>
+            </ul>
+
+          </li>
+          <li class="page-top-menu-item"><a href="#">가입하기</a></li>
+          <li class="page-top-menu-item"><a href="#">로그인</a></li>
+        </ul>
+        <form class="search-form" action="#">
+          <label class="search-form-label" for="search-query">nike.com 검색</label>
+          <input class="search-form-input" type="text" id="search-query" placeholder="nike.com 검색">
+          <input class="search-form-search-button material-symbols-outlined" type="submit" value="search">
+        </form>
+      </div>
+    </nav>
+    <header class="header-container">
+      <div class="header-content">
+        <nav>
+          <ul class="root-menu">
+            <!-- TODO: 더 나은 로고로 교체 -->
+            <li class="root-menu-item">
+              <a href="#"><img class="header-logo" src="img/logo.png"></a>
+            </li>
+            <li class="root-menu-item">
+              <a href="#">New Releases</a>
+              <div class="root-sub-menu-container">
+                <div class="root-sub-menu-content">
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">New & Featured</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신제품 전체보기</a></li>
+                    <li class="root-sub-menu-item"><a href="#">SNKRS</a></li>
+                    <li class="root-sub-menu-item"><a href="#">ACG 신제품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">나이키 아우터웨어</a></li>
+                    <li class="root-sub-menu-item"><a href="#">나이키 플리스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">가을 에센셜</a></li>
+                    <li class="root-sub-menu-item"><a href="#">가을 아웃도어 & 트레일</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Y2K 컬렉션</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Jordan 신제품</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">Shop Icons</a></li>
+                    <li class="root-sub-menu-item"><a href="#">에어포스 1</a></li>
+                    <li class="root-sub-menu-item"><a href="#">덩크</a></li>
+                    <li class="root-sub-menu-item"><a href="#">에어 조던 1</a></li>
+                    <li class="root-sub-menu-item"><a href="#">에어 맥스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">줌 보메로 5</a></li>
+                    <li class="root-sub-menu-item"><a href="#">코르테즈</a></li>
+                    <li class="root-sub-menu-item"><a href="#">테크 헤라</a></li>
+                    <li class="root-sub-menu-item"><a href="#">페가수스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">인피니티 런</a></li>
+                    <li class="root-sub-menu-item"><a href="#">메트콘</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">남성 신제품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">의류</a></li>
+                    <li class="root-sub-menu-item"><a href="#">용품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">전체보기</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">여성 신제품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">의류</a></li>
+                    <li class="root-sub-menu-item"><a href="#">용품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">전체보기</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">키즈 신제품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">의류</a></li>
+                    <li class="root-sub-menu-item"><a href="#">용품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">전체보기</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="root-menu-item">
+              <a href="#">Men</a>
+              <div class="root-sub-menu-container">
+                <div class="root-sub-menu-content">
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">New & Featured</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신제품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">베스트셀러</a></li>
+                    <li class="root-sub-menu-item"><a href="#">SNKRS</a></li>
+                    <li class="root-sub-menu-item"><a href="#">ACG 신제품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">윈터 컬렉션</a></li>
+                    <li class="root-sub-menu-item"><a href="#">마라톤 준비</a></li>
+                    <li class="root-sub-menu-item"><a href="#">나이키 풋볼 피크 레디 팩</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Y2K 컬렉션</a></li>
+                    <li class="root-sub-menu-item"><a href="#">솔로 스우시</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Jordan 신제품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 40% OFF</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신발 전체</a></li>
+                    <li class="root-sub-menu-item"><a href="#">라이프스타일</a></li>
+                    <li class="root-sub-menu-item"><a href="#">러닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">축구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">샌들 & 슬리퍼</a></li>
+                    <li class="root-sub-menu-item"><a href="#">트레이닝 & 짐</a></li>
+                    <li class="root-sub-menu-item"><a href="#">트레일 러닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">농구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">조던</a></li>
+                    <li class="root-sub-menu-item"><a href="#">스케이트보딩</a></li>
+                    <li class="root-sub-menu-item"><a href="#">골프</a></li>
+                    <li class="root-sub-menu-item"><a href="#">테니스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">10만원 이하 신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 35% OFF</a></li>
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">가이드</a></li>
+                    <li class="root-sub-menu-item"><a href="#">런닝화 가이드</a></li>
+                    <li class="root-sub-menu-item"><a href="#">축구화 가이드</a></li>
+                    <li class="root-sub-menu-item"><a href="#">농구화 가이드</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">의류</a></li>
+                    <li class="root-sub-menu-item"><a href="#">의류 전체</a></li>
+                    <li class="root-sub-menu-item"><a href="#">라이프스타일</a></li>
+                    <li class="root-sub-menu-item"><a href="#">재킷 & 베스트</a></li>
+                    <li class="root-sub-menu-item"><a href="#">후디 & 크루</a></li>
+                    <li class="root-sub-menu-item"><a href="#">팬츠 & 타이츠</a></li>
+                    <li class="root-sub-menu-item"><a href="#">탑 & 티셔츠</a></li>
+                    <li class="root-sub-menu-item"><a href="#">쇼츠</a></li>
+                    <li class="root-sub-menu-item"><a href="#">드라이 핏</a></li>
+                    <li class="root-sub-menu-item"><a href="#">나이키 프로</a></li>
+                    <li class="root-sub-menu-item"><a href="#">수영복</a></li>
+                    <li class="root-sub-menu-item"><a href="#">양말</a></li>
+                    <li class="root-sub-menu-item"><a href="#">셋업</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 40% OFF</a></li>
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">팀 유니폼</a></li>
+                    <li class="root-sub-menu-item"><a href="#">NBA</a></li>
+                    <li class="root-sub-menu-item"><a href="#">축구 클럽팀</a></li>
+                    <li class="root-sub-menu-item"><a href="#">한국 국가 대표팀</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">용품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">모자 & 헤드밴드</a></li>
+                    <li class="root-sub-menu-item"><a href="#">가방</a></li>
+                    <li class="root-sub-menu-item"><a href="#">축구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">농구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">골프</a></li>
+                    <li class="root-sub-menu-item"><a href="#">러닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">트레이닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">애플워치</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 35% OFF</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">Shop Collection</a></li>
+                    <li class="root-sub-menu-item"><a href="#">러닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">아웃도어 & 트레일</a></li>
+                    <li class="root-sub-menu-item"><a href="#">트레이닝 & 짐</a></li>
+                    <li class="root-sub-menu-item"><a href="#">농구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">축구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">스케이트보딩</a></li>
+                    <li class="root-sub-menu-item"><a href="#">골프</a></li>
+                    <li class="root-sub-menu-item"><a href="#">테니스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">수영</a></li>
+                    <li class="root-sub-menu-item"><a href="#">MEMBER SHOP</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Nike Soprtswear</a></li>
+                    <li class="root-sub-menu-item"><a href="#">NikeLab</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Jordan</a></li>
+                    <li class="root-sub-menu-item"><a href="#">ACG</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="root-menu-item">
+              <a href="#">Women</a>
+              <div class="root-sub-menu-container">
+                <div class="root-sub-menu-content">
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">New & Featured</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신제품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">베스트셀러</a></li>
+                    <li class="root-sub-menu-item"><a href="#">SNKRS</a></li>
+                    <li class="root-sub-menu-item"><a href="#">ACG 신제품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">우먼스 윈터 컬렉션</a></li>
+                    <li class="root-sub-menu-item"><a href="#">우먼스 댄스 컬렉션</a></li>
+                    <li class="root-sub-menu-item"><a href="#">우먼스 Y2K 컬렉션</a></li>
+                    <li class="root-sub-menu-item"><a href="#">우먼스 클래식</a></li>
+                    <li class="root-sub-menu-item"><a href="#">우먼스 트레이닝 & 짐</a></li>
+                    <li class="root-sub-menu-item"><a href="#">나이키 와플</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Jordan 신제품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 40% OFF</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신발 전체</a></li>
+                    <li class="root-sub-menu-item"><a href="#">라이프스타일</a></li>
+                    <li class="root-sub-menu-item"><a href="#">러닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">축구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">샌들 & 슬리퍼</a></li>
+                    <li class="root-sub-menu-item"><a href="#">트레이닝 & 짐</a></li>
+                    <li class="root-sub-menu-item"><a href="#">트레일 러닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">농구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">조던</a></li>
+                    <li class="root-sub-menu-item"><a href="#">골프</a></li>
+                    <li class="root-sub-menu-item"><a href="#">테니스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">10만원 이하 신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 35% OFF</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">의류</a></li>
+                    <li class="root-sub-menu-item"><a href="#">의류 전체</a></li>
+                    <li class="root-sub-menu-item"><a href="#">라이프스타일</a></li>
+                    <li class="root-sub-menu-item"><a href="#">재킷 & 베스트</a></li>
+                    <li class="root-sub-menu-item"><a href="#">후디 & 크루</a></li>
+                    <li class="root-sub-menu-item"><a href="#">팬츠</a></li>
+                    <li class="root-sub-menu-item"><a href="#">탑 & 티셔츠</a></li>
+                    <li class="root-sub-menu-item"><a href="#">스포츠 브라</a></li>
+                    <li class="root-sub-menu-item"><a href="#">타이츠 & 레깅스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">쇼츠</a></li>
+                    <li class="root-sub-menu-item"><a href="#">요가</a></li>
+                    <li class="root-sub-menu-item"><a href="#">수영복</a></li>
+                    <li class="root-sub-menu-item"><a href="#">양말</a></li>
+                    <li class="root-sub-menu-item"><a href="#">셋업</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 35% OFF</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">용품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">모자 & 헤드밴드</a></li>
+                    <li class="root-sub-menu-item"><a href="#">가방</a></li>
+                    <li class="root-sub-menu-item"><a href="#">축구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">농구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">골프</a></li>
+                    <li class="root-sub-menu-item"><a href="#">러닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">트레이닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">애플워치</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 35% OFF</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">Shop Collection</a></li>
+                    <li class="root-sub-menu-item"><a href="#">러닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">아웃도어 & 트레일</a></li>
+                    <li class="root-sub-menu-item"><a href="#">트레이닝 & 짐</a></li>
+                    <li class="root-sub-menu-item"><a href="#">축구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">골프</a></li>
+                    <li class="root-sub-menu-item"><a href="#">테니스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">요가</a></li>
+                    <li class="root-sub-menu-item"><a href="#">수영</a></li>
+                    <li class="root-sub-menu-item"><a href="#">MEMBER SHOP</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Nike Soprtswear</a></li>
+                    <li class="root-sub-menu-item"><a href="#">NikeLab</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Jordan</a></li>
+                    <li class="root-sub-menu-item"><a href="#">ACG</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="root-menu-item">
+              <a href="#">Kids</a>
+              <div class="root-sub-menu-container">
+                <div class="root-sub-menu-content">
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">New & Featured</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신제품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">베스트셀러</a></li>
+                    <li class="root-sub-menu-item"><a href="#">키즈 가을 에센셜</a></li>
+                    <li class="root-sub-menu-item"><a href="#">키즈 윈터 컬렉션</a></li>
+                    <li class="root-sub-menu-item"><a href="#">나이키 패밀리룩 아이템</a></li>
+                    <li class="root-sub-menu-item"><a href="#">우리 아이 첫 나이키</a></li>
+                    <li class="root-sub-menu-item"><a href="#">아이들을 위한 선물</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 35% OFF</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">덩크 & 에어 포스 1</a></li>
+                    <li class="root-sub-menu-item"><a href="#">코르테즈</a></li>
+                    <li class="root-sub-menu-item"><a href="#">코트 버로우</a></li>
+                    <li class="root-sub-menu-item"><a href="#">이지온</a></li>
+                    <li class="root-sub-menu-item"><a href="#">라이프스타일</a></li>
+                    <li class="root-sub-menu-item"><a href="#">러닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">축구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">농구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">조던</a></li>
+                    <li class="root-sub-menu-item"><a href="#">부츠</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 35% OFF</a></li>
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">사이즈별 신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">베이비 (160mm 이하)</a></li>
+                    <li class="root-sub-menu-item"><a href="#">리틀키즈 (165-200mm)</a></li>
+                    <li class="root-sub-menu-item"><a href="#">주니어 (225-250mm)</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">의류</a></li>
+                    <li class="root-sub-menu-item"><a href="#">상하의 세트</a></li>
+                    <li class="root-sub-menu-item"><a href="#">아우터 & 재킷</a></li>
+                    <li class="root-sub-menu-item"><a href="#">후디 & 크루</a></li>
+                    <li class="root-sub-menu-item"><a href="#">탑 & 티셔츠</a></li>
+                    <li class="root-sub-menu-item"><a href="#">팬츠 & 레깅스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">쇼츠</a></li>
+                    <li class="root-sub-menu-item"><a href="#">스커트 & 드레스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">브라</a></li>
+                    <li class="root-sub-menu-item"><a href="#">수영복</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 35% OFF</a></li>
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">사이즈별 의류</a></li>
+                    <li class="root-sub-menu-item"><a href="#">베이비 (0-3세)</a></li>
+                    <li class="root-sub-menu-item"><a href="#">리틀키즈 (4-7세)</a></li>
+                    <li class="root-sub-menu-item"><a href="#">주니어 (7-15세)</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">용품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">가방</a></li>
+                    <li class="root-sub-menu-item"><a href="#">모자</a></li>
+                    <li class="root-sub-menu-item"><a href="#">양말</a></li>
+                    <li class="root-sub-menu-item"><a href="#">축구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">농구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Sale: Up to 20% OFF</a></li>
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">Shop Collection</a></li>
+                    <li class="root-sub-menu-item"><a href="#">러닝</a></li>
+                    <li class="root-sub-menu-item"><a href="#">축구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">농구</a></li>
+                    <li class="root-sub-menu-item"><a href="#">트레이닝 & 짐</a></li>
+                    <li class="root-sub-menu-item"><a href="#">테니스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">수영</a></li>
+                    <li class="root-sub-menu-item"><a href="#">Jordan</a></li>
+                    <li class="root-sub-menu-item"><a href="#">ACG</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="root-menu-item">
+              <a href="#">Sale</a>
+              <div class="root-sub-menu-container">
+                <div class="root-sub-menu-content">
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">Sale</a></li>
+                    <li class="root-sub-menu-item"><a href="#">New to Sale</a></li>
+                    <li class="root-sub-menu-item"><a href="#">ACG</a></li>
+                    <li class="root-sub-menu-item"><a href="#">나이키 덩크</a></li>
+                    <li class="root-sub-menu-item"><a href="#">에어 포스 1</a></li>
+                    <li class="root-sub-menu-item"><a href="#">에어 조던</a></li>
+                    <li class="root-sub-menu-item"><a href="#">에어 맥스</a></li>
+                    <li class="root-sub-menu-item"><a href="#">전체 보기</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">Mens Sale</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">의류</a></li>
+                    <li class="root-sub-menu-item"><a href="#">용품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">10만원 이하</a></li>
+                    <li class="root-sub-menu-item"><a href="#">전체 보기</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">Mens Sale</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">의류</a></li>
+                    <li class="root-sub-menu-item"><a href="#">용품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">10만원 이하</a></li>
+                    <li class="root-sub-menu-item"><a href="#">전체 보기</a></li>
+                  </ul>
+                  <ul class="root-sub-menu">
+                    <li class="root-sub-menu-item root-sub-menu-title"><a href="#">Mens Sale</a></li>
+                    <li class="root-sub-menu-item"><a href="#">신발</a></li>
+                    <li class="root-sub-menu-item"><a href="#">의류</a></li>
+                    <li class="root-sub-menu-item"><a href="#">용품</a></li>
+                    <li class="root-sub-menu-item"><a href="#">10만원 이하</a></li>
+                    <li class="root-sub-menu-item"><a href="#">전체 보기</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="root-menu-item">
+              <a href="#">SNKRS</a>
+            </li>
+            <li class="root-menu-item">
+              <a href="#">나이키 앱</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </header>
+    <main class="main-container">
+      <div class="main-content">
+        <div>
+          <figure class="prod-figure">
+            <a href="#"><img class="prod-figure-image" src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_885,c_limit/ba941e93-8050-41da-b026-f689664ca5fb/nike-just-do-it.jpg"></a>
+            <figcaption class="prod-figure-text-container">
+              <p class="prod-figure-sub-title">Run Your Run</p>
+              <h1 class="prod-figure-title">달려봐, 너만의 방식대로</h1>
+              <a href="#" class="link-button">구매하기</a>
+            </figcaption>
+          </figure>
+          <figure class="prod-figure">
+            <a href="#"><img class="prod-figure-image"
+                src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_897,c_limit/6ae97c6e-f294-452e-b337-8cf843bfb473/nike-just-do-it.jpg"></a>
+            <figcaption class="prod-figure-text-container">
+              <p class="prod-figure-sub-title">KEEP RUNNING</p>
+              <h1 class="prod-figure-title">궃은 날씨에도 멈추지 않는 질주</h1>
+              <p class="prod-figure-description">
+                빗속에서도 걱정 없는 자유로운 러닝을 경험해 보세요.
+              </p>
+              <a href="#" class="link-button">구매하기</a>
+            </figcaption>
+          </figure>
+          <ul class="two-col-products">
+            <li class="two-col-product-item">
+              <img class="two-col-product-image"
+                src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_443,c_limit/4db1af49-728d-40b4-a0e8-ce9ba641b39c/nike-just-do-it.jpg"
+                alt="Trending Item 1">
+              <h3
+                class="two-col-product-title two-col-product-title-with-space-for-description two-col-product-title-white">
+                Own the Floor</h3>
+              <h3 class="two-col-product-description two-col-product-description-white">스튜디오 밖에서도 빛나는 스니커즈</h3>
+              <a href="#" class="two-col-product-link-button link-button">구매하기</a>
+            </li>
+            <li class="two-col-product-item">
+              <img class="two-col-product-image"
+                src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_443,c_limit/d94b58d8-c931-4499-ab9d-4c20ca23c5e3/nike-just-do-it.jpg"
+                alt="Trending Item 2">
+              <h3 class="two-col-product-title">나이키 덩크</h3>
+              <a href="#" class="two-col-product-link-button link-button link-button-white">구매하기</a>
+            </li>
+          </ul>
+          <figure class="prod-figure">
+            <a href="#"><img class="prod-figure-image"
+                src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_897,c_limit/4ecf37e6-d3e0-4fed-bea6-fa4006e74111/nike-just-do-it.jpg"></a>
+            <figcaption class="prod-figure-text-container">
+              <h1 class="prod-figure-title">나이키 코르테즈 스타일링</h1>
+              <p class="prod-figure-description">
+                헤리티지 러닝에서 경이로운 패션에 이르기까지<br>
+                수십 년을 이어온 레트로한 매력의 코르테즈를 트렌디한 스타일링으로 확인해 보세요.
+              </p>
+              <a href="#" class="link-button">구매하기</a>
+            </figcaption>
+          </figure>
+          <figure class="prod-figure">
+            <a href="#"><video class="prod-figure-image"
+                src="https://static.nike.com/a/images/f_mp4/w_897,c_limit/6a461651-2448-47b8-8a4d-7494aaeb00bb/nike-just-do-it.gif"
+                muted autoplay loop></video></a>
+            <figcaption class="prod-figure-text-container">
+              <h1 class="prod-figure-title">나이키 줌 보메로 5</h1>
+              <p class="prod-figure-description">
+                스타일과 편안함의 완벽한 조화<br>
+                줌 보메로 5와 함께 나만의 스타일을 완성하세요
+              </p>
+              <a href="#" class="link-button">구매하기</a>
+            </figcaption>
+          </figure>
+          <figure class="prod-figure">
+            <a href="#"><img class="prod-figure-image"
+                src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_897,c_limit/0316f0fe-88ee-4497-9772-e792eeda779f/nike-just-do-it.jpg"></a>
+            <figcaption class="prod-figure-text-container">
+              <p class="prod-figure-sub-title">우먼스 피트니스 컬렉션</p>
+              <h1 class="prod-figure-title">가장 나다운 순간을 위해</h1>
+              <p class="prod-figure-description">이경아 트레이너가 추천하는 우먼스 피트니스 컬렉션으로 가장 나다운 움직임을 경험해 보세요.</p>
+              <a href="#" class="link-button">구매하기</a>
+            </figcaption>
+          </figure>
+        </div>
+        <section class="main-section">
+          <h2 class="section-header">Trending Now</h2>
+          <ul class="two-col-products">
+            <li class="two-col-product-item">
+              <img class="two-col-product-image"
+                src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_443,c_limit/79452f24-9a45-4902-b621-b0aaa2a0f152/nike-just-do-it.jpg"
+                alt="Trending Item 1">
+              <h3 class="two-col-product-title">나이키 풀 코스 로우</h3>
+              <a href="#" class="two-col-product-link-button link-button">구매하기</a>
+            </li>
+            <li class="two-col-product-item">
+              <img class="two-col-product-image"
+                src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_443,c_limit/ca4bf6ca-b29d-462a-b8d9-2a8f65f19009/nike-just-do-it.jpg"
+                alt="Trending Item 2">
+              <h3 class="two-col-product-title two-col-product-title-white">나이키 와플</h3>
+              <a href="#" class="two-col-product-link-button link-button link-button-white">구매하기</a>
+            </li>
+          </ul>
+        </section>
+        <section class="main-section">
+          <div class="featured-shoe-slide-controls">
+            <div class="featured-shoe-slide-control-button featured-shoe-slide-control-button-prev"></div>
+            <div class="featured-shoe-slide-control-button featured-shoe-slide-control-button-next"></div>
+          </div>
+          <h2 class="section-header">Featured Shoes</h2>
+          <div class="swiper featured-shoe-slides">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <figure>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_300,c_limit/a43a0292-b616-4d5c-9ee6-9a2bcc118db1/%EC%97%90%EC%96%B4-%EC%A1%B0%EB%8D%98-1-%EB%A1%9C%EC%9A%B0-%EC%97%AC%EC%84%B1-%EC%8B%A0%EB%B0%9C-FBbeey7u.png"
+                    alt="TODO">
+                  <figcaption class="featured-shoe-description">
+                    <p class="featured-shoe-name">에어 조던 1 로우</p>
+                    <p class="featured-shoe-price">139,000 원</p>
+                    <p class="featured-shoe-category">여성 신발</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_300,c_limit/c8e7ad52-cc96-4b7c-bc58-04caf81aa2a2/%ED%8B%B0%EC%97%A0%ED%8F%AC-%EB%A0%88%EC%A0%84%EB%93%9C-10-%ED%94%84%EB%A1%9C-%EC%9D%B8%EC%A1%B0-%EC%9E%94%EB%94%94-%EC%B6%95%EA%B5%AC%ED%99%94-69Srfan2.png"
+                    alt="TODO">
+                  <figcaption class="featured-shoe-description">
+                    <p class="featured-shoe-name">나이키 티엠포 레전드 10 프로</p>
+                    <p class="featured-shoe-price">149,000 원</p>
+                    <p class="featured-shoe-category">인조 잔디 축구화</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_300,c_limit/a48405f1-4c37-423a-8e5e-6cc9747f45be/%ED%94%84%EB%A6%AC-%EB%A9%94%ED%8A%B8%EC%BD%98-5-%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84-%EC%97%AC%EC%84%B1-%EC%9A%B4%EB%8F%99%ED%99%94-ltzUzLeR.png"
+                    alt="TODO">
+                  <figcaption class="featured-shoe-description">
+                    <p class="featured-shoe-name">나이키 프리 메트콘 5 프리미엄</p>
+                    <p class="featured-shoe-price">159,000 원</p>
+                    <p class="featured-shoe-category">여성 운동화</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_300,c_limit/44cafef0-7faf-4178-a6fd-be84bb0b2da4/kd16-nrg-ep-%EB%86%8D%EA%B5%AC%ED%99%94-hX2drdo8.png"
+                    alt="TODO">
+                  <figcaption class="featured-shoe-description">
+                    <p class="featured-shoe-name">KD16 NRG EP</p>
+                    <p class="featured-shoe-price">189,000 원</p>
+                    <p class="featured-shoe-category">농구화</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_300,c_limit/4c113577-9748-4aab-8aaf-a4950ffe9dd1/%EC%97%90%EC%96%B4%EB%A7%A5%EC%8A%A4-1-86-og-g-%EB%82%A8%EC%84%B1-%EA%B3%A8%ED%94%84%ED%99%94-VoyztDzV.png"
+                    alt="TODO">
+                  <figcaption class="featured-shoe-description">
+                    <p class="featured-shoe-name">나이키 에어맥스 1 '86 OG G</p>
+                    <p class="featured-shoe-price">179,000 원</p>
+                    <p class="featured-shoe-category">남성 골프화</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+            </div>
+            <div class="swiper-scrollbar"></div>
+          </div>
+        </section>
+        <section class="main-section">
+          <h2 class="section-header">Always Iconic</h2>
+          <div class="swiper product-slides">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/7a8f4c3f-97f6-44e4-a8af-dd02a73629c3/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">에어 포스 1</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/50334e88-d88f-4b00-a396-69c98746c9ed/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">덩크</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/68616cd2-7195-4acd-b913-3dbaf691a526/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">에어 조던 1</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/3c39d780-8534-4639-a126-80db9e46964b/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">에어맥스</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/2a05b08b-cfe4-4140-bf3a-0a5034e81326/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">메트콘</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/f7667d6e-5a62-44c0-9ec3-e15da795a386/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">페가수스 러닝</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/a227f2a8-ad0d-45c1-9344-de2862c57013/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">나이키 블레이저</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </section>
+        <section class="main-section">
+          <h2 class="section-header">Shop By Sport</h2>
+          <div class="swiper product-slides">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto,cs_srgb/w_960,c_limit/3aef76c8-46c5-4f2a-a18c-3e9bdc148433/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">Running</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/5027a28c-3984-4287-94d1-ee6198238ce9/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">Football</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/a6775fc8-0c23-4b27-b0c8-1be1444fa451/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">Sportswear</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/be13cfe4-b5a9-4c26-bee0-b716e98b099d/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">Basketball</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/5f432ab0-7ed1-48b9-b8c8-9eb3f5dcb63d/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">Tennis</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/b4722f0f-c0e4-4a1b-8050-9f026ef947e9/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">Training</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <figure>
+                  <div class="slide-page-indicator"></div>
+                  <img class="slide-image"
+                    src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_941,c_limit/1d2fd0c4-a7dd-4159-84c0-a0364c0990e3/nike-just-do-it.jpg"
+                    alt="TODO">
+                  <figcaption>
+                    <p class="slide-description">Skateboarding</p>
+                  </figcaption>
+                </figure>
+                <a href="#" class="entire-content-as-link">
+                </a>
+              </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </section>
+        <section>
+          <h2 class="section-header">나이키 커뮤니티와 함께 하기</h2>
+          <ul class="community-apps">
+            <li class="community-app-item">
+              <figure>
+                <img src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_540,c_limit/e22a3c9d-5f93-4b89-90d4-e912e7149ba0/nike-just-do-it.jpg" alt="TODO">
+                <figcaption>
+                  <h3 class="community-app-name">나이키 앱</h3>
+                  <p class="community-app-description">
+                    원하는 것을 누구보다 빠르게,<br>
+                    새로운 영감으로 매일을 새롭게,<br>
+                    상상만 했던 경험을 현실로.<br>
+                    여러분의 매일을 나이키 앱에서 바꿔 보세요.
+                  </p>
+                  <a href="#" class="link-button">자세히 보기</a>
+                </figcaption>
+              </figure>
+              <a href="#" class="entire-content-as-link"></a>
+            </li>
+            <li class="community-app-item">
+              <figure>
+                <img src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_540,c_limit/7c590e5c-56a4-41f6-b53f-cd6fddfefe8d/nike-just-do-it.jpg" alt="TODO">
+                <figcaption>
+                  <h3 class="community-app-name">나이키 트레이닝 클럽(NTC)</h3>
+                  <p class="community-app-description">
+                    NTC 앱으로 개인 맞춤형 트레이닝 가이드를 만나 보세요.<br>
+                    운동, 마음가짐, 영양, 수면 등 몸과<br>
+                    마음을 위한 전문가 팁도 함께 제공됩니다.
+                  </p>
+                  <a href="#" class="link-button">자세히 보기</a>
+                </figcaption>
+              </figure>
+              <a href="#" class="entire-content-as-link"></a>
+            <li class="community-app-item">
+              <figure>
+                <img src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_540,c_limit/2d206354-2b4c-46f1-9b10-a9e02529b180/nike-just-do-it.jpg" alt="TODO">
+                <figcaption>
+                  <h3 class="community-app-name">나이커 런 클럽(NRC)</h3>
+                  <p class="community-app-description">
+                    NRC 앱과 함께 언제 어디서든 러닝을 시작해 보세요.<br>
+                    전문 러닝 코치들의 오디오 가이드 런으로<br>
+                    올바른 러닝 루틴을 만들 수 있습니다.
+                  </p>
+                  <a href="#" class="link-button">자세히 보기</a>
+                </figcaption>
+              </figure>
+              <a href="#" class="entire-content-as-link"></a>
+            </li>
+            <li class="community-app-item">
+              <figure>
+                <img src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_540,c_limit/311f8eab-b642-43b9-827e-9b232c4ffa50/nike-just-do-it.jpg" alt="TODO">
+                <figcaption>
+                  <h3 class="community-app-name">SNKRS 앱</h3>
+                  <p class="community-app-description">
+                    최고의 스니커즈, 최신 발매 소식, 독점 비하인드 스토리.<br>
+                    새로운 스니커즈 문화를 선도할 SNKRS 커뮤니티로 초대 합니다.
+                  </p>
+                  <a href="#" class="link-button">자세히 보기</a>
+                </figcaption>
+              </figure>
+              <a href="#" class="entire-content-as-link"></a>
+            </li>
+          </ul>
+        </section>
+        <nav>
+          <ul class="main-bottom-menu">
+            <li class="main-bottom-menu-item">
+              <a href="#" class="main-bottom-submenu-title">Featured</a>
+              <ul class="main-bottom-submenu">
+                <li class="main-bottom-submenu-item"><a href="#">에어 포스 1</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">조던 1</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">에어맥스 97</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">에어맥스 90</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">블레이저</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">리액트</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">페가수스</a></li>
+              </ul>
+            </li>
+            <li class="main-bottom-menu-item">
+              <a href="#" class="main-bottom-submenu-title">신발</a>
+              <ul class="main-bottom-submenu">
+                <li class="main-bottom-submenu-item"><a href="#">전체 보기</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">조던 신발</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">러닝 신발</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">농구 신발</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">테니스 신발</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">트레이닝 신발</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">Sale 신발</a></li>
+              </ul>
+            </li>
+            <li class="main-bottom-menu-item">
+              <a href="#" class="main-bottom-submenu-title">의류</a>
+              <ul class="main-bottom-submenu">
+                <li class="main-bottom-submenu-item"><a href="#">전체 보기</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">탑 & 티셔츠</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">쇼츠</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">후디 & 풀오버</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">조거 & 스웻팬츠</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">스포츠 브라</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">팬츠 & 타이츠</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">양말</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">요가</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">NikeLab</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">Sale 의류</a></li>
+              </ul>
+            </li>
+            <li class="main-bottom-menu-item">
+              <a href="#" class="main-bottom-submenu-title">Kids</a>
+              <ul class="main-bottom-submenu">
+                <li class="main-bottom-submenu-item"><a href="#">베이비 신발</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">키즈 신발</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">키즈 농구 신발</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">키즈 러닝 신발</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">키즈 조던 신발</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">키즈 의류</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">키즈 백팩</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">키즈 양말</a></li>
+                <li class="main-bottom-submenu-item"><a href="#">Sale 키즈</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </main>
+    <footer class="footer-container">
+      <div class="footer-content">
+        <nav class="footer-menus-container">
+          <ul class="footer-menu footer-site-menu">
+            <li class="footer-site-menu-item"><a href="#">새로운 소식</a></li>
+            <li class="footer-site-menu-item"><a href="#">멤버가입</a></li>
+            <li class="footer-site-menu-item"><a href="#">매장안내</a></li>
+            <li class="footer-site-menu-item"><a href="#">나이키 저널</a></li>
+          </ul>
+          <ul class="footer-menu footer-titled-menu">
+            <li class="footer-titled-menu-title"><a href="#">도움말</a></li>
+            <li class="footer-titled-menu-item"><a href="#">로그인 안내</a></li>
+            <li class="footer-titled-menu-item"><a href="#">주문배송조회</a></li>
+            <li class="footer-titled-menu-item"><a href="#">반품 정책</a></li>
+            <li class="footer-titled-menu-item"><a href="#">경제 방법</a></li>
+            <li class="footer-titled-menu-item"><a href="#">공지사항</a></li>
+            <li class="footer-titled-menu-item"><a href="#">문의하기</a></li>
+          </ul>
+          <ul class="footer-menu footer-titled-menu">
+            <li class="footer-titled-menu-title"><a href="#">ABOUT NIKE</a></li>
+            <li class="footer-titled-menu-item"><a href="#">소식</a></li>
+            <li class="footer-titled-menu-item"><a href="#">채용</a></li>
+            <li class="footer-titled-menu-item"><a href="#">투자자</a></li>
+            <li class="footer-titled-menu-item"><a href="#">지속 가능성</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-social-links-container">
+          <ul class="footer-social-menu">
+            <!-- TODO -->
+            <li class="footer-social-menu-item"><a href="#"><i class="bi bi-twitter-x"></i></a></li>
+            <li class="footer-social-menu-item"><a href="#"><i class="bi bi-facebook"></i></a></li>
+            <li class="footer-social-menu-item"><a href="#"><i class="bi bi-youtube"></i></a></li>
+            <li class="footer-social-menu-item"><a href="#"><i class="bi bi-instagram"></i></a></li>
+          </ul>
+        </nav>
+        <div class="footer-bottom-container">
+          <ul class="footer-eula-privacy-links">
+            <li class="footer-eula-privacy-links-item"><a href="#">이용약관</a></li>
+            <li class="footer-eula-privacy-links-item"><a href="#">개인정보처리방침</a></li>
+            <li class="footer-eula-privacy-links-item"><a href="#">위치 기반 서비스 약관</a></li>
+          </ul>
+          <div class="footer-language-copyright-seccamera-notice">
+            <div class="footer-language-copyright">
+              <a href="#"><span class="material-symbols-outlined footer-location-icon">location_on</span>대한민국</a>
+              &copy; 2023 Nike, Inc. All Rights Reserved
+            </div>
+            <a class="footer-seccamera-notice" href="#">영상정보처리기기 운영 방침</a>
+          </div>
+          <div class="footer-misc">
+            <div class="footer-misc-left">
+              (유)나이키코리아 대표 Kimberlee Lynn Chang Mendes, 킴벌리 린 창 멘데스 | 서울 강남구 테헤란로 152 강남파이낸스센터 30층 | 통신판매업신고번호
+              2011-서울강남-03461 | 등록번호 220-88-09068 <a href="#">사업자 정보 확인</a><br><br>
+              고객센터 전화 문의 <a href="#">080-022-0182</a> FAX 02-6744-5880 | 이메일 <a href="#">service@nike.co.kr</a> |
+              호스팅서비스사업자 (유)나이키코리아
+            </div>
+            <div class="footer-misc-right">
+              현금 등으로 결제 시 안전 거래를 위해 나이키 쇼핑몰에서 가입하신 한국결제네트웍스 유한회사의 구매안전 서비스(<a href="#">결제대금예치</a>)를 이용하실 수 있습니다.<br><br>
+              콘텐츠산업진흥법에 의한 콘텐츠 보호 안내&nbsp;&nbsp;<a href="#">자세히 보기</a><br><br>
+              본 페이지는 Nike의 공식 페이지가 아닌 개인 포트폴리오 목적으로 만들어졌습니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
